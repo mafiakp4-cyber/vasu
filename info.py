@@ -13,9 +13,9 @@ def is_enabled(value, default):
 
 # Bot information
 SESSION = environ.get('SESSION', 'Media_search')
-API_ID = int(environ.get('API_ID', '22505271'))
-API_HASH = environ.get('API_HASH', 'c89a94fcfda4bc06524d0903977fc81e')
-BOT_TOKEN = environ.get('BOT_TOKEN', "6994768927:AAGJMn6BjsJjhLP7yvTYxTL8d1kZkg8OQcE")
+API_ID = int(environ.get('API_ID', '28055923'))
+API_HASH = environ.get('API_HASH', '4903d5ebbf5f4b7edcf0ff82293e58d7')
+BOT_TOKEN = environ.get('BOT_TOKEN', "7329027311:AAHo49AxTzSw8nuTxGFMHhgdja5Ru4Dr8ew")
 
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
@@ -34,17 +34,17 @@ STREAM_API = (environ.get('STREAM_API', 'PUIAQBIFrydvLhIzAOeGV8yZppu2'))
 STREAMHTO = (environ.get('STREAMHTO', 'https://t.me/Ultroid_Official/18'))
 
 # Admins, Channels & Users
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6695586027').split()]
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002027563292').split()] #Channel id for auto indexing ( make sure bot is admin )
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '7816883745').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002155332774').split()] #Channel id for auto indexing ( make sure bot is admin )
 auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '').split()]
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
 PREMIUM_USER = [int(user) if id_pattern.search(user) else user for user in environ.get('PREMIUM_USER', '').split()]
-auth_channel = environ.get('AUTH_CHANNEL', '-1001725568693') #Channel / Group Id for force sub ( make sure bot is admin )
-auth_grp = environ.get('AUTH_GROUP')
+auth_channel = environ.get('AUTH_CHANNEL', '-1001998307024') #Channel / Group Id for force sub ( make sure bot is admin )
+auth_grp = environ.get('AUTH_GROUP', '-1002077433895')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
-support_chat_id = environ.get('SUPPORT_CHAT_ID', '-1002115046888') # support group id ( make sure bot is admin )
-reqst_channel = environ.get('REQST_CHANNEL_ID', '-1002062925443') # request channel id ( make sure bot is admin )
+support_chat_id = environ.get('SUPPORT_CHAT_ID', '-1002149303924') # support group id ( make sure bot is admin )
+reqst_channel = environ.get('REQST_CHANNEL_ID', '-1002168300949') # request channel id ( make sure bot is admin )
 REQST_CHANNEL = int(reqst_channel) if reqst_channel and id_pattern.search(reqst_channel) else None
 SUPPORT_CHAT_ID = int(support_chat_id) if support_chat_id and id_pattern.search(support_chat_id) else None
 NO_RESULTS_MSG = bool(environ.get("NO_RESULTS_MSG", False)) # True if you want no results messages in Log Channel
