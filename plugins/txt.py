@@ -1,6 +1,6 @@
 ''' 
-modified by t.me/UltroidxTeam
+modified by t.me/imvasupareek
 
-Support t.me/ultroidofficial_chat
+Support t.me/imvasupareek
 
 '''
