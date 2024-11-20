@@ -21,12 +21,12 @@ BOT_TOKEN = environ.get('BOT_TOKEN', "7859610824:AAEOMWF1G6VAyXgBYW8y6BrpYgXxQLo
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', True))
 
-PICS = (environ.get('PICS', 'https://vault.pictures/p/4584243ff83f4149a4aa6a6aa979ef88')).split() #SAMPLE PIC
-NOR_IMG = environ.get("NOR_IMG", "https://vault.pictures/p/4584243ff83f4149a4aa6a6aa979ef88")
+PICS = (environ.get('PICS', 'https://envs.sh/598.jpg')).split() #SAMPLE PIC
+NOR_IMG = environ.get("NOR_IMG", "https://envs.sh/598.jpg")
 MELCOW_VID = environ.get("MELCOW_VID", "https://envs.sh/5rb.mp4")
-SPELL_IMG = environ.get("SPELL_IMG", "https://vault.pictures/p/4584243ff83f4149a4aa6a6aa979ef88")
-SUBSCRIPTION = (environ.get('SUBSCRIPTION', 'https://vault.pictures/p/4584243ff83f4149a4aa6a6aa979ef88'))
-CODE = (environ.get('CODE', 'https://vault.pictures/p/4584243ff83f4149a4aa6a6aa979ef88'))
+SPELL_IMG = environ.get("SPELL_IMG", "https://envs.sh/598.jpg")
+SUBSCRIPTION = (environ.get('SUBSCRIPTION', 'https://envs.sh/598.jpg'))
+CODE = (environ.get('CODE', 'https://envs.sh/598.jpg'))
 
 #stream link shortner
 STREAM_SITE = (environ.get('STREAM_SITE', 'api.shareus.io'))
