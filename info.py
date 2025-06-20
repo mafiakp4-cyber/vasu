@@ -15,7 +15,7 @@ def is_enabled(value, default):
 SESSION = environ.get('SESSION', 'Media_search')
 API_ID = int(environ.get('API_ID', '21302239'))
 API_HASH = environ.get('API_HASH', '1560930c983fbca6a1fcc8eab760d40d')
-BOT_TOKEN = environ.get('BOT_TOKEN', "7584097532:AAHmktfV7r5WWFA6x5YZY6-FzsTOeX2p9c8")
+BOT_TOKEN = environ.get('BOT_TOKEN', "7859610824:AAFVdUL_PmH21Arg9X7EQO93t0OwKH01U-o")
 
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
@@ -52,7 +52,7 @@ NO_RESULTS_MSG = bool(environ.get("NO_RESULTS_MSG", False)) # True if you want n
 # MongoDB information 
 # https://youtu.be/qFB0cFqiyOM?si=QGuFSZ7qhxl4VTrA
 
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://kanha749:Kanha%401234@cluster0.4oucl36.mongodb.net/moviesdb?retryWrites=true&w=majority&appName=Cluster0")
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://Kanha:kanha123456@cluster0.4oucl36.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
