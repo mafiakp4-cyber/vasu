@@ -249,7 +249,7 @@ Mᴇꜱꜱᴀɢᴇ : <b>{}</b>"""
     
     CAPTION = """ ⚜️ <i><a href="https://t.me/+Tbkw7GQzcB05M2U9"><b>{file_name}</b></a></i>
 
-⚜️ Power by <a href="https://t.me/+Tbkw7GQzcB05M2U9"><b>YourChannelName</b></a>
+⚜️ Power by <a href="https://t.me/+Tbkw7GQzcB05M2U9"><b>[Tiger theater]</b></a>
 """
 
     IMDB_TEMPLATE_TXT = """
