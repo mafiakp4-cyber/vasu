@@ -225,7 +225,7 @@ if data.split("-", 1)[0] == "BATCH":
         buttons = msg.get("buttons", [])
         reply_markup = InlineKeyboardMarkup(inline_keyboard=buttons) if buttons else None
 
-        await client.send_cached_media(
+   await client.send_cached_media(
             chat_id=message.from_user.id,
             file_id=msg.get("file_id"),
             caption=f_caption,
@@ -267,6 +267,7 @@ if data.split("-", 1)[0] == "BATCH":
             await asyncio.sleep(1) 
         await sts.delete()
         return
+    
     
     elif data.split("-", 1)[0] == "DSTORE":
         sts = await message.reply("<b>Please wait...</b>")
