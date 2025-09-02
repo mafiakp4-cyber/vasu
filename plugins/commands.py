@@ -178,34 +178,36 @@ status_msg = await message.reply("🔍 Searching...")
 await message.reply_photo(
     photo=SUBSCRIPTION,  # तुम्हारी file/photo
     caption=script.PREPLANS_TXT.format(message.from_user.mention),
-    reply_markup=reply_markup
+    reply_markup=reply_markup,
+    parse_mode=enums.ParseMode.HTML
 )
 
 # 3️⃣ Searching message delete करना
 await status_msg.delete()
-            parse_mode=enums.ParseMode.HTML
-        )
-        return  
-    data = message.command[1]
-    try:
-        pre, file_id = data.split('_', 1)
-    except:
-        file_id = data
-        pre = ""
-    if data.split("-", 1)[0] == "BATCH":
-        sts = await message.reply("<b>Please wait...</b>")
-        file_id = data.split("-", 1)[1]
-        msgs = BATCH_FILES.get(file_id)
-        if not msgs:
-            file = await client.download_media(file_id)
-            try: 
-                with open(file) as file_data:
-                    msgs=json.loads(file_data.read())
-            except:
-                await sts.edit("FAILED")
-                return await client.send_message(LOG_CHANNEL, "UNABLE TO OPEN FILE.")
-            os.remove(file)
-            BATCH_FILES[file_id] = msgs
+
+return
+
+data = message.command[1]
+try:
+    pre, file_id = data.split('_', 1)
+except:
+    file_id = data
+    pre = ""
+
+if data.split("-", 1)[0] == "BATCH":
+    sts = await message.reply("<b>Please wait...</b>")
+    file_id = data.split("-", 1)[1]
+    msgs = BATCH_FILES.get(file_id)
+    if not msgs:
+        file = await client.download_media(file_id)
+        try:
+            with open(file) as file_data:
+                msgs = json.loads(file_data.read())
+        except:
+            await sts.edit("FAILED")
+            return await client.send_message(LOG_CHANNEL, "UNABLE TO OPEN FILE.")
+        os.remove(file)
+        BATCH_FILES[file_id] = msgs
         for msg in msgs:
             title = msg.get("title")
             size=get_size(int(msg.get("size", 0)))
