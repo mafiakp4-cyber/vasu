@@ -160,8 +160,7 @@ async def start(client, message):
                     InlineKeyboardButton('📲 ꜱᴇɴᴅ ᴘᴀʏᴍᴇɴᴛ ꜱᴄʀᴇᴇɴꜱʜᴏᴛ', user_id=int(6695586027))
                   ],[
                     InlineKeyboardButton('❌ ᴄʟᴏꜱᴇ ❌', callback_data='close_data')
-                  ]]
-        from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 # बटन बनाना
 buttons = [
@@ -208,25 +207,35 @@ if data.split("-", 1)[0] == "BATCH":
             return await client.send_message(LOG_CHANNEL, "UNABLE TO OPEN FILE.")
         os.remove(file)
         BATCH_FILES[file_id] = msgs
-        for msg in msgs:
-            title = msg.get("title")
-            size=get_size(int(msg.get("size", 0)))
-            f_caption=msg.get("caption", "")
-            if BATCH_FILE_CAPTION:
-                try:
-                    f_caption=BATCH_FILE_CAPTION.format(file_name= '' if title is None else title, file_size='' if size is None else size, file_caption='' if f_caption is None else f_caption)
-                except Exception as e:
-                    logger.exception(e)
-                    f_caption=f_caption
-            if f_caption is None:
-                f_caption = f"{title}"
+
+    for msg in msgs:
+        title = msg.get("title")
+        size = get_size(int(msg.get("size", 0)))
+        f_caption = msg.get("caption", "")
+
+        if BATCH_FILE_CAPTION:
             try:
-                await client.send_cached_media(
-                    chat_id=message.from_user.id,
-                    file_id=msg.get("file_id"),
-                    caption=f_caption,
-                    protect_content=msg.get('protect', False),
-                    reply_markup=InlineKeyboardMarkup(
+                f_caption = BATCH_FILE_CAPTION.format(
+                    file_name='' if title is None else title,
+                    file_size='' if size is None else size,
+                    file_caption='' if f_caption is None else f_caption
+                )
+            except Exception as e:
+                logger.exception(e)
+
+        if f_caption is None:
+            f_caption = f"{title}"
+
+        buttons = msg.get("buttons", [])
+        reply_markup = InlineKeyboardMarkup(inline_keyboard=buttons) if buttons else None
+
+        await client.send_cached_media(
+            chat_id=message.from_user.id,
+            file_id=msg.get("file_id"),
+            caption=f_caption,
+            protect_content=msg.get('protect', False),
+            reply_markup=reply_markup
+        )(
                         [
                             [
                                 InlineKeyboardButton('🚀 ꜰᴀꜱᴛ ᴅᴏᴡɴʟᴏᴀᴅ / ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ 🧿', callback_data=f'generate_stream_link:{file_id}'),
