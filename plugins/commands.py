@@ -111,7 +111,7 @@ async def start(client, message):
             parse_mode=enums.ParseMode.MARKDOWN
             )
         return
-    if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
+       if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         buttons = [[
                     InlineKeyboardButton('☆ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ☆', url=f'http://telegram.me/{temp.U_NAME}?startgroup=true')
                 ],[
@@ -156,82 +156,58 @@ async def start(client, message):
         
         
     if len(message.command) == 2 and message.command[1] in ["premium"]:
-    buttons = [
-        [
-            InlineKeyboardButton(
-                '📲 ꜱᴇɴᴅ ᴘᴀʏᴍᴇɴᴛ ꜱᴄʀᴇᴇɴꜱʜᴏᴛ', 
-                user_id=int(6695586027)
-            ),
-            InlineKeyboardButton('❌ ᴄʟᴏꜱᴇ ❌', callback_data='close_data')
-        ]
-    ]
-    reply_markup = InlineKeyboardMarkup(inline_keyboard=buttons)
-# 1️⃣ Searching message दिखाना
-status_msg = await message.reply("🔍 Searching...")
-
-# 2️⃣ Photo भेजना
-await message.reply_photo(
-    photo=SUBSCRIPTION,  # तुम्हारी file/photo
-    caption=script.PREPLANS_TXT.format(message.from_user.mention),
-    reply_markup=reply_markup,
-    parse_mode=enums.ParseMode.HTML
-)
-
-# 3️⃣ Searching message delete करना
-await status_msg.delete()
-
-return
-
-data = message.command[1]
-try:
-    pre, file_id = data.split('_', 1)
-except:
-    file_id = data
-    pre = ""
-
-if data.split("-", 1)[0] == "BATCH":
-    sts = await message.reply("<b>Please wait...</b>")
-    file_id = data.split("-", 1)[1]
-    msgs = BATCH_FILES.get(file_id)
-    if not msgs:
-        file = await client.download_media(file_id)
-        try:
-            with open(file) as file_data:
-                msgs = json.loads(file_data.read())
-        except:
-            await sts.edit("FAILED")
-            return await client.send_message(LOG_CHANNEL, "UNABLE TO OPEN FILE.")
-        os.remove(file)
-        BATCH_FILES[file_id] = msgs
-
-    for msg in msgs:
-        title = msg.get("title")
-        size = get_size(int(msg.get("size", 0)))
-        f_caption = msg.get("caption", "")
-
-        if BATCH_FILE_CAPTION:
+        buttons = [[
+                    InlineKeyboardButton('📲 ꜱᴇɴᴅ ᴘᴀʏᴍᴇɴᴛ ꜱᴄʀᴇᴇɴꜱʜᴏᴛ', user_id=int(6695586027))
+                  ],[
+                    InlineKeyboardButton('❌ ᴄʟᴏꜱᴇ ❌', callback_data='close_data')
+                  ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await message.reply_photo(
+            photo=(SUBSCRIPTION),
+            caption=script.PREPLANS_TXT.format(message.from_user.mention),
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+        return  
+    data = message.command[1]
+    try:
+        pre, file_id = data.split('_', 1)
+    except:
+        file_id = data
+        pre = ""
+    if data.split("-", 1)[0] == "BATCH":
+        sts = await message.reply("<b>Please wait...</b>")
+        file_id = data.split("-", 1)[1]
+        msgs = BATCH_FILES.get(file_id)
+        if not msgs:
+            file = await client.download_media(file_id)
+            try: 
+                with open(file) as file_data:
+                    msgs=json.loads(file_data.read())
+            except:
+                await sts.edit("FAILED")
+                return await client.send_message(LOG_CHANNEL, "UNABLE TO OPEN FILE.")
+            os.remove(file)
+            BATCH_FILES[file_id] = msgs
+        for msg in msgs:
+            title = msg.get("title")
+            size=get_size(int(msg.get("size", 0)))
+            f_caption=msg.get("caption", "")
+            if BATCH_FILE_CAPTION:
+                try:
+                    f_caption=BATCH_FILE_CAPTION.format(file_name= '' if title is None else title, file_size='' if size is None else size, file_caption='' if f_caption is None else f_caption)
+                except Exception as e:
+                    logger.exception(e)
+                    f_caption=f_caption
+            if f_caption is None:
+                f_caption = f"{title}"
             try:
-                f_caption = BATCH_FILE_CAPTION.format(
-                    file_name='' if title is None else title,
-                    file_size='' if size is None else size,
-                    file_caption='' if f_caption is None else f_caption
-                )
-            except Exception as e:
-                logger.exception(e)
-
-        if f_caption is None:
-            f_caption = f"{title}"
-
-        buttons = msg.get("buttons", [])
-        reply_markup = InlineKeyboardMarkup(inline_keyboard=buttons) if buttons else None
-
-   await client.send_cached_media(
-            chat_id=message.from_user.id,
-            file_id=msg.get("file_id"),
-            caption=f_caption,
-            protect_content=msg.get('protect', False),
-            reply_markup=reply_markup
-        )(
+                await client.send_cached_media(
+                    chat_id=message.from_user.id,
+                    file_id=msg.get("file_id"),
+                    caption=f_caption,
+                    protect_content=msg.get('protect', False),
+                    reply_markup=InlineKeyboardMarkup(
                         [
                             [
                                 InlineKeyboardButton('🚀 ꜰᴀꜱᴛ ᴅᴏᴡɴʟᴏᴀᴅ / ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ 🧿', callback_data=f'generate_stream_link:{file_id}'),
@@ -243,6 +219,30 @@ if data.split("-", 1)[0] == "BATCH":
                     )
                 )
             except FloodWait as e:
+                await asyncio.sleep(e.x)
+                logger.warning(f"Floodwait of {e.x} sec.")
+                await client.send_cached_media(
+                    chat_id=message.from_user.id,
+                    file_id=msg.get("file_id"),
+                    caption=f_caption,
+                    protect_content=msg.get('protect', False),
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            [
+                                InlineKeyboardButton('🚀 ꜰᴀꜱᴛ ᴅᴏᴡɴʟᴏᴀᴅ / ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ 🧿', callback_data=f'generate_stream_link:{file_id}'),
+                            ],
+                            [
+                                InlineKeyboardButton('📌 ᴊᴏɪɴ ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ 📌', url=f'https://t.me/+Tbkw7GQzcB05M2U9') #Don't change anything without contacting me @LazyDeveloperr
+                            ]
+                        ]
+                    )
+                )
+            except Exception as e:
+                logger.warning(e, exc_info=True)
+                continue
+            await asyncio.sleep(1) 
+        await sts.delete()
+        return
                 await asyncio.sleep(e.x)
                 logger.warning(f"Floodwait of {e.x} sec.")
                 await client.send_cached_media(
