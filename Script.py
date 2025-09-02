@@ -247,7 +247,10 @@ Mᴇꜱꜱᴀɢᴇ : <b>{}</b>"""
 """ 
    # PLEASE DO NOT REMOVE ANY CREDITS ❤️‍🩹
     
-    CAPTION = """ ⚜️ <i><a href="https://t.me/+Tbkw7GQzcB05M2U9"><b>{file_name}</b></a></i>\n\n"""
+    CAPTION = """ ⚜️ <i><a href="https://t.me/+Tbkw7GQzcB05M2U9"><b>{file_name}</b></a></i>
+
+⚜️ Power by <a href="https://t.me/+Tbkw7GQzcB05M2U9"><b>YourChannelName</b></a>
+"""
 
     IMDB_TEMPLATE_TXT = """
 <b>ʜᴇʏ {message.from_user.mention}, ʜᴇʀᴇ ɪꜱ ᴛʜᴇ ʀᴇꜱᴜʟᴛꜱ ꜰᴏʀ ʏᴏᴜʀ ǫᴜᴇʀʏ {search}.
