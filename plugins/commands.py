@@ -161,11 +161,28 @@ async def start(client, message):
                   ],[
                     InlineKeyboardButton('❌ ᴄʟᴏꜱᴇ ❌', callback_data='close_data')
                   ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await message.reply_photo(
-            photo=(SUBSCRIPTION),
-            caption=script.PREPLANS_TXT.format(message.from_user.mention),
-            reply_markup=reply_markup,
+        reply_markup = from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
+# बटन बनाना
+buttons = [
+    [InlineKeyboardButton(text="🍀 Plan 1", callback_data="plan1")],
+    [InlineKeyboardButton(text="🔥 Plan 2", callback_data="plan2")]
+]
+
+reply_markup = InlineKeyboardMarkup(inline_keyboard=buttons)
+
+# 1️⃣ Searching message दिखाना
+status_msg = await message.reply("🔍 Searching...")
+
+# 2️⃣ Photo भेजना
+await message.reply_photo(
+    photo=SUBSCRIPTION,  # तुम्हारी file/photo
+    caption=script.PREPLANS_TXT.format(message.from_user.mention),
+    reply_markup=reply_markup
+)
+
+# 3️⃣ Searching message delete करना
+await status_msg.delete()
             parse_mode=enums.ParseMode.HTML
         )
         return  
