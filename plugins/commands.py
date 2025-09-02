@@ -156,20 +156,16 @@ async def start(client, message):
         
         
     if len(message.command) == 2 and message.command[1] in ["premium"]:
-        buttons = [
-                    InlineKeyboardButton('📲 ꜱᴇɴᴅ ᴘᴀʏᴍᴇɴᴛ ꜱᴄʀᴇᴇɴꜱʜᴏᴛ', user_id=int(6695586027))
-                  [
-                    InlineKeyboardButton('❌ ᴄʟᴏꜱᴇ ❌', callback_data='close_data')
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
-# बटन बनाना
-buttons = [
-    [InlineKeyboardButton(text="🍀 Plan 1", callback_data="plan1")],
-    [InlineKeyboardButton(text="🔥 Plan 2", callback_data="plan2")]
-]
-
-reply_markup = InlineKeyboardMarkup(inline_keyboard=buttons)
-
+    buttons = [
+        [
+            InlineKeyboardButton(
+                '📲 ꜱᴇɴᴅ ᴘᴀʏᴍᴇɴᴛ ꜱᴄʀᴇᴇɴꜱʜᴏᴛ', 
+                user_id=int(6695586027)
+            ),
+            InlineKeyboardButton('❌ ᴄʟᴏꜱᴇ ❌', callback_data='close_data')
+        ]
+    ]
+    reply_markup = InlineKeyboardMarkup(inline_keyboard=buttons)
 # 1️⃣ Searching message दिखाना
 status_msg = await message.reply("🔍 Searching...")
 
