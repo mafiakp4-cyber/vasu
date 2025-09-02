@@ -21,12 +21,12 @@ BOT_TOKEN = environ.get('BOT_TOKEN', "8045543758:AAHlwa7gLwUmTYDzj4xiGEWvfYSFWkp
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', True))
 
-PICS = (environ.get('PICS', 'https://envs.sh/GiI.jpg')).split() #SAMPLE PIC
-NOR_IMG = environ.get("NOR_IMG", "https://envs.sh/GiI.jpg")
+PICS = (environ.get('PICS', 'https://ibb.co/kgJp3Fbq')).split() #SAMPLE PIC
+NOR_IMG = environ.get("NOR_IMG", "https://ibb.co/kgJp3Fbq")
 MELCOW_VID = environ.get("MELCOW_VID", "https://envs.sh/5rb.mp4")
-SPELL_IMG = environ.get("SPELL_IMG", "https://envs.sh/GiI.jpg")
-SUBSCRIPTION = (environ.get('SUBSCRIPTION', 'https://envs.sh/GiI.jpg'))
-CODE = (environ.get('CODE', 'https://envs.sh/GiI.jpg'))
+SPELL_IMG = environ.get("SPELL_IMG", "https://ibb.co/kgJp3Fbq")
+SUBSCRIPTION = (environ.get('SUBSCRIPTION', 'https://ibb.co/kgJp3Fbq'))
+CODE = (environ.get('CODE', 'https://ibb.co/kgJp3Fbq'))
 
 #stream link shortner
 STREAM_SITE = (environ.get('STREAM_SITE', 'api.shareus.io'))
@@ -52,8 +52,8 @@ NO_RESULTS_MSG = bool(environ.get("NO_RESULTS_MSG", False)) # True if you want n
 # MongoDB information 
 # https://youtu.be/qFB0cFqiyOM?si=QGuFSZ7qhxl4VTrA
 
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://kpmafia86:kanha123456@cluster0.iabs9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://kanha:kanh4321@kanha.hnytqah.mongodb.net/?retryWrites=true&w=majority&appName=Kanha")
+DATABASE_NAME = environ.get('DATABASE_NAME', "kanha")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # Verify/token system
