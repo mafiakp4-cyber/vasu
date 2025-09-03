@@ -1117,24 +1117,24 @@ async def cb_handler(client: Client, query: CallbackQuery):
     
     elif query.data.startswith("send_fsall"):
         temp_var, ident, key, offset = query.data.split("#")
-        search = BUTTON0.get(key)
+        search = TEXT.get(key)
         if not search:
             await query.answer(script.OLD_ALRT_TXT.format(query.from_user.first_name),show_alert=True)
             return
         files, n_offset, total = await get_search_results(query.message.chat.id, search, offset=int(offset), filter=True)
         await send_all(client, query.from_user.id, files, ident, query.message.chat.id, query.from_user.first_name, query)
-        search = BUTTONS1.get(key)
+        search = TEXT1.get(key)
         files, n_offset, total = await get_search_results(query.message.chat.id, search, offset=int(offset), filter=True)
         await send_all(client, query.from_user.id, files, ident, query.message.chat.id, query.from_user.first_name, query)
-        search = BUTTONS2.get(key)
+        search = TEXT2.get(key)
         files, n_offset, total = await get_search_results(query.message.chat.id, search, offset=int(offset), filter=True)
         await send_all(client, query.from_user.id, files, ident, query.message.chat.id, query.from_user.first_name, query)
         await query.answer(f"ʜᴇʏ {query.from_user.first_name}, ᴀʟʟ ꜰɪʟᴇꜱ ᴏɴ ᴛʜɪꜱ ᴘᴀɢᴇ ʜᴀꜱ ʙᴇᴇɴ ꜱᴇɴᴛ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴛᴏ ʏᴏᴜ ʙʏ ᴅᴍ !", show_alert=True)
         
     elif query.data.startswith("send_fall"):
         temp_var, ident, key, offset = query.data.split("#")
-        if BUTTONS.get(key)!=None:
-            search = BUTTONS.get(key)
+        if TEXT.get(key)!=None:
+            search = TEXT.get(key)
         else:
             search = FRESH.get(key)
         if not search:
@@ -2068,7 +2068,7 @@ async def auto_filter(client, msg, spoll=False):
             return
         if len(message.text) < 100:
             search = message.text
-            m=await message.reply_sticker("CAACAgQAAxkBAAEKSxplArIUActk4ORQuFn3DHFvBqQCOgACBQMAAnJxFyVYcSIunXgGjjAE",
+            m=await message.reply_sticker("https://cdn.jsdelivr.net/gh/Jisshubot/JISSHU_BOTS/Video.mp4/Group_20240921_202540_0001.gif",
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(f'Seaching for {search} 🔎', url=f"https://t.me/+Tbkw7GQzcB05M2U9")]]) 
             )
             search = search.lower()
@@ -2099,7 +2099,7 @@ async def auto_filter(client, msg, spoll=False):
     else:
         message = msg.message.reply_to_message  # msg will be callback query
         search, files, offset, total_results = spoll
-        m=await message.reply_sticker("CAACAgQAAxkBAAEKSxplArIUActk4ORQuFn3DHFvBqQCOgACBQMAAnJxFyVYcSIunXgGjjAE",
+        m=await message.reply_sticker("https://cdn.jsdelivr.net/gh/Jisshubot/JISSHU_BOTS/Video.mp4/Group_20240921_202540_0001.gif",
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(f'Seaching for {search} 🔎', url=f"https://t.me/+Tbkw7GQzcB05M2U9")]]) 
         )
         settings = await get_settings(message.chat.id)
