@@ -52,7 +52,7 @@ NO_RESULTS_MSG = bool(environ.get("NO_RESULTS_MSG", False)) # True if you want n
 # MongoDB information 
 # https://youtu.be/qFB0cFqiyOM?si=QGuFSZ7qhxl4VTrA
 
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://kanha:kanh4321@kanha.hnytqah.mongodb.net/?retryWrites=true&w=majority&appName=Kanha")
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://Kanha:<db_password>@kanha.hnytqah.mongodb.net/?retryWrites=true&w=majority&appName=Kanha")
 DATABASE_NAME = environ.get('DATABASE_NAME', "kanha")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
