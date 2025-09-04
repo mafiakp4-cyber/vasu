@@ -87,7 +87,7 @@ async def group_search(client, message):
             await message.delete()
             return await message.reply("<b>sᴇɴᴅɪɴɢ ʟɪɴᴋ ɪsɴ'ᴛ ᴀʟʟᴏᴡᴇᴅ ʜᴇʀᴇ ❌🤞🏻</b>")
 
-        elif '@admin' in message.text.lower() or '@admins' in message.text.lower():
+        elif '@kanha_pareek' in message.text.lower() or '@kanha_pareek' in message.text.lower():
             if await is_check_admin(client, message.chat.id, message.from_user.id):
                 return
             admins = []
@@ -129,7 +129,7 @@ async def group_search(client, message):
 @Client.on_callback_query(filters.regex(r"^reffff"))
 async def refercall(bot, query):
     btn = [[
-        InlineKeyboardButton('invite link', url=f'https://telegram.me/share/url?url=https://t.me/{bot.me.username}?start=reff_{query.from_user.id}&text=Hello%21%20Experience%20a%20bot%20that%20offers%20a%20vast%20library%20of%20unlimited%20movies%20and%20series.%20%F0%9F%98%83'),
+        InlineKeyboardButton('invite link', url=f'https://telegram.me/share/url?url=https://t.me/+Tbkw7GQzcB05M2U9{bot.me.username}?start=reff_{query.from_user.id}&text=Hello%21%20Experience%20a%20bot%20that%20offers%20a%20vast%20library%20of%20unlimited%20movies%20and%20series.%20%F0%9F%98%83'),
         InlineKeyboardButton(f'⏳ {referdb.get_refer_points(query.from_user.id)}', callback_data='ref_point'),
         InlineKeyboardButton('Back', callback_data='start')
     ]]
@@ -137,7 +137,7 @@ async def refercall(bot, query):
     await bot.send_photo(
         chat_id=query.message.chat.id,
         photo="https://graph.org/file/1a2e64aee3d4d10edd930.jpg",
-        caption=f'Hay Your refer link:\n\nhttps://t.me/{bot.me.username}?start=reff_{query.from_user.id}\n\nShare this link with your friends, Each time they join, you will get 10 referral points and after 100 points you will get 1 month premium subscription.',
+        caption=f'Hay Your refer link:\n\nhttps://t.me/+Tbkw7GQzcB05M2U9{bot.me.username}?start=reff_{query.from_user.id}\n\nShare this link with your friends, Each time they join, you will get 10 referral points and after 100 points you will get 1 month premium subscription.',
         reply_markup=reply_markup,
         parse_mode=enums.ParseMode.HTML
     )
@@ -1660,3 +1660,4 @@ async def advantage_spell_chok(message):
         await message.delete()
     except:
         pass
+
